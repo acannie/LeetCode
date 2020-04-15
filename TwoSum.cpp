@@ -1,28 +1,31 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class Solution {
+class Solution
+{
 public:
-    vector<int> twoSum(vector<int>& nums, int target) {
+    vector<int> twoSum(vector<int> &nums, int target)
+    {
         vector<int> ans;
         unordered_map<int, int> hash;
-        
-        for(int i = 0; i < nums.size(); i++)
+
+        for (int i = 0; i < nums.size(); i++)
         {
             int numberToFind = target - nums[i];
-            
-            if(hash.find(numberToFind) != hash.end())
+
+            if (hash.find(numberToFind) != hash.end())
             {
                 ans.emplace_back(i);
                 ans.emplace_back(hash[numberToFind]);
                 return ans;
             }
+            hash[nums[i]] = i;
         }
-        
+
         /*
         for(int i = 0; i < nums.size(); i++)
         {
-            for(int j = i; j < nums.size(); j++)
+            for(int j = i + 1; j < nums.size(); j++)
             {
                 if(nums[i] + nums[j] == target)
                 {
@@ -33,7 +36,7 @@ public:
             }
         }
         */
-        
+
         return ans;
     }
 };
